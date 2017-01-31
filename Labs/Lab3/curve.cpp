@@ -57,6 +57,9 @@ int main(){
 		else if(grades[j] >= c && grades[j]<= b) cout << "Person " << (j+1) << "'s grade is B." << endl;
 		else if(grades[j] >= b) cout << "Person " << (j+1) << "'s grade is A." << endl;
 	}
+
+	delete [] grades;
+	return 0;
 }
 
 float mean(int* grades, int count){
