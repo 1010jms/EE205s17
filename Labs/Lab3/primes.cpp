@@ -36,7 +36,9 @@ int main(){
 			else{
 				i++;
 				if(i >= 2) i = 0;
+				//break;
 			}
+			//i = 0;
 		}
 
 		cout << "Number of Prime Numbers >= 2: " << count << endl;
