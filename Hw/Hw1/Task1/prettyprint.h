@@ -15,3 +15,5 @@
 using namespace std;
 
 void printMatrix(int** matrix, int n);
+void printorganisms(int array[32][72]);
+

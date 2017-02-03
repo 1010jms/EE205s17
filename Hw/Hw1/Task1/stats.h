@@ -14,6 +14,11 @@
 #include <iostream>
 using namespace std;
 
+//Initialize the matrix generator function
 int** MatrixGenerator(int n);
+
+//Initialize the set border function
 int** SetBorder(int** matrix, int n, int tempL, int tempR, int tempT, int tempB);
+
+//Initialize the average-temperature calculation function
 int** AverageTemp(int** matrix, int n);
