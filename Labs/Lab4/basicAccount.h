@@ -6,7 +6,7 @@
  * Lab Section: 001
  *
  * Date Started: 1/31/17
- * Date Finished: 
+ * Date Finished: 2/6/17 
  */
 
 #include <string>
@@ -15,55 +15,22 @@ using namespace std;
 
 class BasicAccount {
 public:
-	BasicAccount(){
-		accountNumber = 0;
-		name = "";
-		balance = 0;
-	}
+	BasicAccount();
+	BasicAccount(long int a, string n, float b);
+	BasicAccount(BasicAccount& ba);
+	void withdraw(float amount);
+	void deposit(float amount);
+	float getBalance();
+	void setAccountNumber(long int a);
+	void setName(string n);
+	void setBalance(float amount);
+	void prettyprint();
 
-	BasicAccount(long int a, string n, float b){
-		accountNumber = a;
-		name = n;
-		balance = b;
-	}
+	void operator = (const BasicAccount& ba);
+	bool operator == (const BasicAccount& ba);
 
-	BasicAccount(BasicAccount& ba){
-		balance = ba.balance;
-		name = ba.name;
-	}
-
-	void withdraw(float amount){
-		balance -= amount;
-	}
-
-	void deposit(float amount){
-		balance += amount;
-	}
-
-	float getBalance(){
-		return balance;
-	}
-
-	void setAccountNumber(long int a){
-		accountNumber = a;
-	}	
-
-	void setName(string n){
-                name = n;
-        }
-
-	void setBalance(float amount){
-		balance = amount;
-	}
-
-	void display(){
-		cout << "Account Number: " << accountNumber << endl;
-		cout << "Name: " << name << endl;
-		cout << "Balance: " << balance << endl;
-		cout << endl;
-	}
 private:
 	long int accountNumber;
 	string name;
 	float balance;
-};	
+};

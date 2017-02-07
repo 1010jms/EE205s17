@@ -6,37 +6,72 @@
  * Lab Section: 001
  *
  * Date Started: 1/31/17
- * Date Finished: 
+ * Date Finished: 2/6/17 
  */
 
 #include "basicAccount.h"
 
-int main(){
-	BasicAccount ba1;
-	BasicAccount ba2;
-
-	ba1.display();
-	ba2.display();
-
-	ba1.setBalance(400);
-	ba2.setName("Alice");
-
-	ba1.display();
-	ba2.display();
-
-	BasicAccount ba3(100325, "Bob", 4310);
-	ba3.display();
-
-	BasicAccount ba4(ba2);
-	ba4.display();
-
-	ba4.setBalance(ba3.getBalance());
-	ba4.setAccountNumber(12345);
-	ba4.display();
-
-	ba3.withdraw(300);
-	ba3.display();
-
-	ba1.deposit(2000);
-	ba1.display();
+BasicAccount::BasicAccount(){
+	accountNumber = 0;
+	name = "";
+	balance = 0;
 }
+
+BasicAccount::BasicAccount(long int a, string n, float b){
+	accountNumber = a;
+	name = n;
+	balance = b;
+}
+
+BasicAccount::BasicAccount(BasicAccount& ba){
+	accountNumber = ba.accountNumber;
+	name = ba.name;
+	balance = ba.balance;
+}
+
+void BasicAccount::withdraw(float amount){
+	balance -= amount;
+}
+
+void BasicAccount::deposit(float amount){
+	balance += amount;
+}
+
+float BasicAccount::getBalance(){
+	return balance;
+}
+
+void BasicAccount::setAccountNumber(long int a){
+	accountNumber = a;
+}
+
+void BasicAccount::setName(string n){
+	name = n;
+}
+
+void BasicAccount::setBalance(float amount){
+	balance = amount;
+}
+
+void BasicAccount::prettyprint(){
+	cout << "Account Number: " << accountNumber << endl;
+	cout << "Name: " << name << endl;
+	cout << "Balance: " << balance << endl;
+	cout << endl;
+}
+
+void BasicAccount::operator = (const BasicAccount& ba){
+	accountNumber = ba.accountNumber;
+	name = ba.name;
+	balance = ba.balance;
+}
+
+bool BasicAccount::operator == (const BasicAccount& ba){
+	if(accountNumber == ba.accountNumber
+	    && name == ba.name 
+	    && balance == ba.balance)	return true;
+
+	else return false;
+}
+	
+

@@ -6,43 +6,29 @@
  * Lab Section: 001
  *
  * Date Started: 1/31/17
- * Date Finished: 
+ * Date Finished: 2/7/17 
  */
 
 #include "basicAccount.h"
 
 class SavingsAccount {
 public:
-	SavingsAccount(){
-		ba = BasicAccount();
-		withdrawNumber = 0;
-	}
+	SavingsAccount();
+	SavingsAccount(long int a, string n, float b, int w);
+	SavingsAccount(SavingsAccount& sa);
+	void withdraw(float amount);
+	void monthly_check();
+	void deposit(float amount);
+	float getBalance();
+	int getWithdrawNumber();
+	void setAccountNumber(long int a);
+	void setName(string n);
+	void setBalance(float amount);
+	void setWithdrawNumber(int w);
+	void prettyprint();
 
-	SavingsAccount(long int a, string n, float b, int w) {
-		ba = BasicAccount(a,n,b);
-		withdrawNumber = w;
-	}
-
-	SavingsAccount(SavingsAccount& sa){}
-
-	void withdraw(float amount){
-		ba.withdraw(amount);
-		withdrawNumber++;
-	
-		if(withdrawNumber > 2){
-			ba.withdraw(3);
-			cout << "Amount of Withdraws Exceeds 2. $3 has Been Charged from Your Account." << endl;
-		}
-
-		if(ba.getBalance() < 100){
-			ba.withdraw(10);
-			cout << "Balance is Below $100. $10 has Been Charged from Your Account." << endl;
-		}
-	}
-	
-	void deposit(float amount){
-		ba.deposit(amount);
-	}
+	void operator = (const SavingsAccount& sa);
+	bool operator == (const SavingsAccount& sa);
 private:
 	BasicAccount ba;
 	int withdrawNumber;
