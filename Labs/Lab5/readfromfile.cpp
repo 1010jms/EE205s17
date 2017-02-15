@@ -8,7 +8,7 @@
  * Lab Section: 001
  *
  * Date Started: 2/7/17
- * Date Finished: 
+ * Date Finished: 2/7/17 
  */
 
 #include <fstream>

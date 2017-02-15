@@ -8,7 +8,7 @@
  * Lab Section: 001
  *
  * Date Started: 2/7/17
- * Date Finished:
+ * Date Finished: 2/14/17
  */
 
 #include <fstream>
@@ -32,22 +32,33 @@ int main(){
 
 	string line;
 	char cline[1029];
+	int g = 0;
 	int people = 0;
+	int gradecount[100];
 	vector<int> grades;
-
+	vector<vector<int>> students;
+ 
 	while(getline(infile, line)){
-		cout << "Line: " << line << endl << endl;
+		cout << "Line " << (people+1) << ": " << line << endl << endl;
 
 		strncpy(cline, line.c_str(), line.length());
 		cline[sizeof(cline - 1)] = 0;
 		
 		vector<string> tokens = tokensplit(line.c_str(), ' ');
+
+		gradecount[people] = 0;
 		for(vector<string>::const_iterator i = tokens.begin(); i != tokens.end(); i++){	
-		//	cout << *i << ' ';
-			grades.push_back(atoi(tokens.at(people).c_str()));
-			cout << grades[people] << endl << endl;
-			people++;
+			grades.push_back(atoi(tokens.at(g).c_str()));
+			cout << grades[g] << endl << endl;
+			g++;
+			gradecount[people]++;
 		}
+			
+		students.push_back(grades);
+		grades.clear();
+		g = 0;
+		tokens.clear();
+		people++;
 	}
 
 	infile.close();
@@ -74,24 +85,30 @@ int main(){
 		}
 	 }*/
 
-	float avg = mean(grades, people);
-	float var = stdev(grades,avg, people); 
-	
-	cout << endl;
-	cout << "Mean = " << avg << endl;
-	cout << "Standard Deviation = " << var << endl;
-	
-	for(int j = 0; j < people; j++){
-		float f = avg - ((3/2)*var);
-		float d = avg - ((1/2)*var);
-		float c = avg + ((1/2)*var);
-		float b = avg + ((3/2)*var);
+	for(int k = 0; k < people; k++){
+		float avg = mean(students[k], people);
+		float var = stdev(students[k],avg, people); 	
 
-		if (grades[j] < f) cout << "Grade " << (j+1) <<" (" << grades[j] << ") is an F." << endl;
-		else if(grades[j] >= f && grades[j] <= d) cout << "Grade " << (j+1) << " (" << grades[j] << ") is a D." << endl; 
-		else if(grades[j] >= d && grades[j] <= c) cout << "Grade " << (j+1) << " (" << grades[j] << ") is a C." << endl;
-		else if(grades[j] >= c && grades[j]<= b) cout << "Grade " << (j+1) << " (" << grades[j] << ") is a B." << endl;
-		else if(grades[j] >= b) cout << "Grade " << (j+1) << " (" << grades[j] << ") is an A." << endl;
+		cout << "Student " << (k+1) <<"'s Grades:" << endl;
+		cout << "Mean = " << avg << endl;
+		cout << "Standard Deviation = " << var << endl;
+	
+		vector<int> gdisp = students[k];
+
+		for(int j = 0; j < gradecount[k]; j++){
+			float f = avg - ((3/2)*var);
+			float d = avg - ((1/2)*var);
+			float c = avg + ((1/2)*var);
+			float b = avg + ((3/2)*var);
+
+			if (gdisp[j] < f) cout << "Grade " << (j+1) <<" (" << gdisp[j] << ") is an F." << endl;
+			else if(gdisp[j] >= f && gdisp[j] <= d) cout << "Grade " << (j+1) << " (" << gdisp[j] << ") is a D." << endl; 
+			else if(gdisp[j] >= d && gdisp[j] <= c) cout << "Grade " << (j+1) << " (" << gdisp[j] << ") is a C." << endl;
+			else if(gdisp[j] >= c && gdisp[j]<= b) cout << "Grade " << (j+1) << " (" << gdisp[j] << ") is a B." << endl;
+			else if(gdisp[j] >= b) cout << "Grade " << (j+1) << " (" << gdisp[j] << ") is an A." << endl;
+		}
+
+		cout << endl;
 	}
 
 	//delete [] grades;

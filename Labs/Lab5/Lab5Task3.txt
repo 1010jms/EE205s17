@@ -1,0 +1,56 @@
+Name: Jared Shimabukuro |
+UH ID: 2257-2949	|
+Lab Section: 001	|
+			|		
+Lab 5 Task 3		|
+			|
+Date Started: 2/14/17   |
+Date Finished: 2/14/17  |
+________________________|
+
+1. (2) Improper Neutralization of Special Elements Used in an OS
+Command.
+   
+   (3) Buffer Copy Without Checking Size of Input ('Classic
+Buffer Overflow')
+
+   (6) Missing Authorization
+
+   (10) Reliance on Untrusted Inputs in a Security Decision
+
+   (11) Execution with Unnecessary Privileges
+
+   (13) Improper Limitation of a Pathname to a Restricted
+Directory ('Path Traversal')
+
+   (14) Download of Code Without Integrity Check
+
+   (16) Inclusion of Functionality from Untrusted Control Sphere
+
+   (17) Incorrect Permission Assignment for Critical Resource
+
+   (18) Use of Potentially Dangerous Function
+
+   (20) Incorrect Calculation of Buffer Size
+
+   (23) Uncontrolled Format String
+
+   (24) Integer Overflow or Wraparound
+
+_________________________________________________________________
+
+2. Buffer Overflow occurs when the program attempts to put in
+more data than the buffer is able to hold. This is a very common
+problem for programmers, and it usually occurs when an input
+provides an amount of variables that is greater than the maximum
+amount of space in the array (e.g. name[3] = "Jared")
+
+_________________________________________________________________
+
+3. My "favorite" vulnerability is the Use of Potentially
+Dangerous Function (18) in which "the program invokes a
+potentially dangerous function that could introduce a
+vulnerability if used incorrectly." This can be prevented by
+either learning more about the function being used and
+implementing it correctly or by opting out of using the function
+completely.  
