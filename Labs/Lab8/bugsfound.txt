@@ -1,0 +1,13 @@
+Name: Jared Shimabukuro
+Team Name: North Shore Remembers
+Teammates: Jaymark Ganibi, Brandon Wong
+
+File Name: bugsfound.txt
+
+Compile Errors:
+1. In function “Token Token_stream::get()” the second input variable is a string instead of a double or 0.
+
+2. Missing “}” at the end of the main function
+
+3. ‘<function-style-cast>’: cannot convert from ‘initializer list’ to ‘Token’
+
